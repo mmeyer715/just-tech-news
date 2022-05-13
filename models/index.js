@@ -48,4 +48,24 @@ Post.hasMany(Vote, {
     foreignKey: 'post_id'
 });
 
-module.exports = { User, Post, Vote };
+// comments belong to users
+Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+// comments belong to posts
+Comment.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+// users have many comments
+User.hasMany(Comment, {
+    foreignKey: 'user_id'
+});
+
+// posts have many comments
+Post.hasMany(Comment, {
+    foreignKey: 'post_id'
+});
+
+module.exports = { User, Post, Vote, Comment };
