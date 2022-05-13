@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// get one user including post, comments, votes
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -53,6 +54,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// create user
 router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
@@ -67,6 +69,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// login user and validate password
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
@@ -90,6 +93,7 @@ router.post('/login', (req, res) => {
   });
 });
 
+// update user
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
@@ -113,6 +117,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// delete user
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
